@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calc">
+
+    
+    <h1>Calculadora</h1>
+    <img src="img/logo.if.png">
+    <p>A área do triângulo é a medida da sua superfície e utiliza como unidade de medida qualquer medida de comprimento elevada ao quadrado,
+         por exemplo os metros quadrados, centímetros quadrados etc. De forma geral, a área de um triângulo consiste na metade da multiplicação
+          da base pela altura.</p>
+    <button id="btn">Abrir</button>
+    </div>
+
+    <script>
+        document.getElementById('btn').addEventListener('click', function() {
+            var popup = window.open('popup.html', 'janela', 'width=400, height=500, scrollbars=no, status=no, toolbar=no, location=no, menubar=no, resizable=no, fullscreen=no');
+
+            window.addEventListener('message', function(event) {
+    
+                if (event.source === popup && event.data) {
+                    document.getElementById('result').innerHTML = `
+                        <p>Soma das Notas: ${event.data.soma}</p>
+                        <p>Média das Notas: ${event.data.media}</p>
+                    `;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
